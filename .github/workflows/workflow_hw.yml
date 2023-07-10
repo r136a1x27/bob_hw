@@ -8,18 +8,15 @@ jobs:
           strategy:
           matrix:
               python-version: ["3.8", "3.9", "3.10"]
-              # 배열로 지정하면 run one job for each value(3jobs)
 
       steps:
           - uses: actions/checkout@v3
 
-          # python 환경 설정하는 step
           - name: Set up Python ${{ matrix.python-version }}
             uses: actions/setup-python@v4
             with:
               python-version: ${{ matrix.python-version }}
 
-		# python version 출력하는 step
           - name: Display Python version
             run: python -c "import sys; print(sys.version)" > output/${{ matrix.python-version }}.output
 
